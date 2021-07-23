@@ -14,6 +14,12 @@ h2{
   margin-left: auto;
   margin-right: auto;
   display: block;
+  
+  /* scale up pixels */
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
 }
 img{
   padding-left: 0;

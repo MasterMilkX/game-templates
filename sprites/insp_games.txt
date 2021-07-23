@@ -1,0 +1,174 @@
+GB/GBC
+=======
+* Pokemon Red			- simple sprite design, simple UI, simple controls, large map
+* Pokemon Crystal		- good sprite design, first female trainer, 2 world maps, post story
+* Link's Awakening		- good dungeon design, good sprite design, good controls
+* Dragon Ball Z - LSW		- good sprite design
+
+
+
+
+GBA
+=======
+* Kirby and the Amazing Mirror	- good controls, sprite design, world design, power ups, multiplayer
+* Pokemon Sapphire		- amazing sprite design, music, world design
+
+
+
+
+
+
+DS
+=======
+* Pokemon Mystery Dungeon	- gameplay, amazing sprite design, story, post game, character personalities
+* Mario Hoops 3-on-3		- controls, special moves
+* Nintendogs			- gameplay, graphics, music, AI
+* Mario Kart DS			- multiplayer, tight controls, map design
+* Zelda Phantom Hourglass	- innovative controls, good story, music, good dungeon design
+* Scribblenauts			- good sprite design, creative puzzle solutions
+* Super Mario 64 DS		- good controls, amazing map design
+* Kirby Super Star Ultra	- multiple games, good sprite design, companion AI
+* Pokemon Diamond		- music, good sprite design, good character personalities
+* Tony Hawk American Sk8land	- good controls, music
+* Kingdom Hearts 358/2 Days	- amazing story, character personalities, gameplay adding to story
+* Lego Star Wars: Complete Saga	- great gameplay, good map design, good controls, music
+
+
+
+
+
+
+NES
+=======
+* Legend of Zelda		- simple dungeon, items, exploration
+* Super Mario 3			- music, tanooki suit
+
+
+
+
+
+
+SNES
+=======
+* Zelda: Link to the Past	- amazing controls, good sprite design, music, good world design
+* Super Mario World		    - good sprite design, good map design, music, cape powerup
+* Donkey Kong Country		- art design, music, pre-rendered background
+
+
+
+
+
+N64
+=======
+* Zelda: Ocarina of Time	- music, model design, world design, story
+* Zelda: Majora's Mask		- character personalities
+
+
+
+
+
+
+Wii
+=======
+* Zelda: Skyward Sword		- great controls, character personalities
+* WiiFit			- skateboard game, rhythm kung fu game, obstacle course, candle game, bicycle game
+* Super Mario Bros Wii		- multiplayer
+* Smash Bros Brawl		- multiplayer, character choices, good controls
+* Zelda: Twilight Princess	- good controls, great story, good art design
+* Sonic Riders: Zero Gravity	- good gameplay
+* Guitar Hero: World Tour       - great gameplay, amazing soundtrack
+
+
+PS1
+=======
+* Final Fantasy 7		- amazing story, great character design, pre-rendered maps, great gameplay, good music
+* PaRappa the Rapper		- good music, great art design
+
+
+
+
+
+
+PS2
+=======
+* Bully 			- great controls, good map design, good story, good character design, character personalities
+* Kingdom Hearts 2		- amazing story, multiple worlds, good character design (between worlds), character personalities, good controls
+* Simpsons Hit and Run		- great controls, great gameplay, good world design, open world
+* Spongebob BfBB		- great world design, good controls
+* SSX On Tour			- music, great controls, special tricks
+* Tony Hawk Pro Skater 4	- music, good controls, good world design
+* Simpsons Skateboarding	- good world design, good character design, challenges
+* Sitting Ducks			- good world design, good art design, open world
+* Sonic Heros			- music, good character design
+* Shadow of the Colossus	- good gameplay, good world design, great boss design
+* Disney Skate Adventure	- good world design, good character design, music
+
+
+
+
+
+
+
+PS3
+=======
+* LittleBigPlanet2		- music, good world design, good character design, amazing gameplay, multiplayer
+* Batman: Arkham City		- great gameplay
+* Adventure Time: EtDBIDK	- good sprite design, good gameplay, good level design
+
+
+
+
+
+Web/Flash
+=======
+* Fancy Pants 2			- amazing controls, good art design, good level design
+* FreeRider			- great controls, good level design 
+* N				- amazing controls, great level design
+* Superfighters			- great controls, good level design, good sprite design
+* Avalanche			- simple gameplay, good controls
+* Super Smash Flash 2		- great character choices, good controls
+* Realm of the Mad God		- good sprite design, good gameplay, MMO
+* Run				- simple gameplay
+* Muffin Knight			- simple gameplay, good sprite design, weapon variability
+* Treasure Arena		- good gameplay, multiplayer, good character design, good controls
+* Fantasy Online		- good sprite design, MMO
+* IceBreaker			- good sprite design, good level design
+* The Impossible Quiz		- funny, music
+* World's Hardest Game		- simple gameplay, simple graphics, tight controls
+* Epic Battle Fantasy 3		- character personalities, good gameplay, good art design
+* CheeseQuest			- funny
+* Coma				- music, good world design, simple gameplay
+* Endeavor			- great sprite design, good world design, good gameplay
+* Depict1			- good story
+* Fancy Pants World 3		- great character design, good gameplay
+* You are the coin master	- good sprite design, simple gameplay
+* Hell is other people		- funny, simple gameplay, interesting AI
+* Just One Boss			- great sprite design, good gameplay, music
+* Hyper Pixel 10000		- simple sprite design, good world design
+* Red Rogue			- good sprite design, good gameplay
+
+
+
+PC
+=======
+* Minecraft			- multiplayer, great gameplay, music, good sprite design
+* Butterfly Soup		- funny, good story, good character personalities
+* Nethack			- great gameplay, randomness
+* Skyrim			- great world design, multitude of quests, good characters, good story, great gameplay
+* Castle Crashers		- funny, great sprite design, good art design 
+* Emily is Away			- good story
+* Fez				- great sprite design
+* Grand Theft Auto 5		- great gameplay
+* Hammerwatch			- amazing controls, good sprite design, great gameplay, music, good level design
+* Hyper Light Drifter		- amazing controls, great sprite design, good world design
+* Life is Strange		- great story, music, good character personalities, good gameplay
+* Life is Strange: BtS		- great story, music, good character personalities
+* Mirror's Edge			- good controls, great gameplay, good world design, good art design
+* Nidhogg			- great gameplay, good sprite design
+* OlliOlli			- good controls
+* Streets of Rogue		- great gameplay, good sprite design, good world design, character class options
+* Spelunky			- good sprite design, randomness, good gameplay
+* Undertale			- music, great story, great character personalities, good gameplay
+* Super Meat Boy		- great controls, good level design
+
+
