@@ -75,7 +75,7 @@ var keys = [];
 
 
 var playerIMG = new Image();
-playerIMG.src = "../sprites/demo_player.png";
+playerIMG.src = "../sprites/kyle_rpg.png";
 var playerReady = false;
 playerIMG.onload = function(){playerReady = true;};
 
