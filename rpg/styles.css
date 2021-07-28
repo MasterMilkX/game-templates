@@ -50,7 +50,7 @@ p{
   color: #ffffff;
 }
 
-@font-face {font-family: Fixedsys; src: url('../gui/sprites/FSEX300.ttf');}
+@font-face {font-family: Fixedsys; src: url('../sprites/gui/FSEX300.ttf');}
 @font-face {font-family: Gameboy; src: url('../sprites/gui/pokemon_gb-webfont.ttf');}
 
 #gui{

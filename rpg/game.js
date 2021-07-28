@@ -8,13 +8,6 @@ canvas.height = 144;
 document.body.appendChild(canvas);
 
 
-var guiCanvas = document.createElement("canvas");
-guiCanvas.id = "guiCanvas";
-var ctx2 = guiCanvas.getContext("2d");
-guiCanvas.width = 160;
-guiCanvas.height = 54;
-document.body.appendChild(guiCanvas);
-
 //background image
 var bgPNG = new Image();
 bgPNG.src = "../sprites/background.png";
@@ -52,7 +45,7 @@ var camera = {
 
 //lists
 var items = [];
-var npcs = [];
+var npcs = [ai];
 
 
 // directionals
@@ -74,19 +67,22 @@ var actionKeySet = [a_key, b_key, select_key, start_key];
 var keys = [];
 
 
-var playerIMG = new Image();
-playerIMG.src = "../sprites/kyle_rpg.png";
-var playerReady = false;
-playerIMG.onload = function(){playerReady = true;};
+var kyleIMG = new Image();
+kyleIMG.src = "../sprites/kyle_rpg.png";
+var kyleReady = false;
+kyleIMG.onload = function(){kyleReady = true;};
 
-var player = {
+
+//player
+// [REPLACE KYLE WITH YOUR MC NAME]
+var kyle = {
 	//sprite properties
-		name : "Player",
+		name : "kyle",
 		width : 16,
 		height : 16,
 		dir : "south",
-		img : playerIMG,
-		ready : playerReady,
+		img : kyleIMG,
+		ready : kyleReady,
 		offsetX : 0,
 		offsetY : 0,
 
@@ -348,13 +344,13 @@ function canTalk(sprite, other_pers){
 
 //faces the main character
 function faceOpposite(npc){
-	if(player.dir === "north")
+	if(kyle.dir === "north")
 		npc.dir = "south";
-	else if(player.dir === "south")
+	else if(kyle.dir === "south")
 		npc.dir = "north"
-	else if(player.dir === "west")
+	else if(kyle.dir === "west")
 		npc.dir = "east"
-	else if(player.dir === "east")
+	else if(kyle.dir === "east")
 		npc.dir = "west"
 }
 
@@ -631,28 +627,28 @@ function withinBounds(x,y){
 	return xBound;
 }
 
-//have the camera follow the player
+//have the camera follow the kyle
 function panCamera(){
 	if(level_loaded){
 		//camera displacement
-		if((player.x >= (canvas.width / 2)) && (player.x <= (map[0].length * size) - (canvas.width / 2)))
-			camera.x = player.x - (canvas.width / 2);
+		if((kyle.x >= (canvas.width / 2)) && (kyle.x <= (map[0].length * size) - (canvas.width / 2)))
+			camera.x = kyle.x - (canvas.width / 2);
 
-		if((player.y >= canvas.height / 2) && (player.y <= (map.length * size) - (canvas.height / 2)))
-			camera.y = player.y - (canvas.height / 2);
+		if((kyle.y >= canvas.height / 2) && (kyle.y <= (map.length * size) - (canvas.height / 2)))
+			camera.y = kyle.y - (canvas.height / 2);
 	}
 	
 }
 
-//reset the camera's position on the player
+//reset the camera's position on the kyle
 function resetCamera(){
 	camera.x = 0;
 	camera.y = 0;
 
-	if((player.x > (map[0].length * size) - (canvas.width / 2)))
+	if((kyle.x > (map[0].length * size) - (canvas.width / 2)))
 		camera.x = (map[0].length * size) - canvas.width;
 
-	if((player.y > (map.length * size) - (canvas.height / 2)))
+	if((kyle.y > (map.length * size) - (canvas.height / 2)))
 		camera.y = (map.length * size) - canvas.height;
 }
 
@@ -676,7 +672,7 @@ function drunkardsWalk(sprite, boundary=null){
 			if(directions.length == 0)
 				return;
 		
-		}while(collide(pseudoChar, boundary) || hitOther(pseudoChar, player))
+		}while(collide(pseudoChar, boundary) || hitOther(pseudoChar, kyle))
 
 		//move in direction
 		if(pseudoChar.dir === "north"){
@@ -740,11 +736,11 @@ function checkRender(){
 	}
 
 
-	//player
-	if(!player.ready){
-		player.img.onload = function(){player.ready = true;}
-		if(player.img.width !== 0){
-			player.ready = true;
+	//kyle
+	if(!kyle.ready){
+		kyle.img.onload = function(){kyle.ready = true;}
+		if(kyle.img.width !== 0){
+			kyle.ready = true;
 		}
 	}
 
@@ -918,8 +914,8 @@ function render(){
 		drawsprite(npcs[c]);
 	}
 
-	//draw player
-	drawsprite(player);
+	//draw kyle
+	drawsprite(kyle);
 
 	//gui
 	drawGUI();
@@ -936,182 +932,6 @@ function render(){
 function drawGUI(){
 	drawDialog();
 }
-
-
-////////////////////   DIALOGUE     ///////////////////
-
-//show dialog gui
-function drawDialog(){
-	var dialogue = story.dialogue;
-	var choice = story.choice_box;
-	if(dialogue.show && dialogReady){
-		ctx.drawImage(dialogIMG, camera.x, camera.y);
-		//wrapText(dialogue.text[dialogue.index], camera.x + 12, camera.y + 116)
-		showText();
-
-		/*
-		if(choice.show){
-			//choice boxes
-			for(var c=0;c<choice.options.length;c++){
-				var cx = camera.x+6;
-				var cy = camera.y+95+(-11*(c+1));
-				ctx.drawImage(optionIMG, cx, cy);
-				ctx.font = "6px Gameboy";
-				ctx.fillText(choice.options[choice.options.length-(c+1)], cx+4, cy+9);
-			}
-
-			//select
-			ctx.drawImage(selectIMG, camera.x+6, camera.y+95+(11*(choice.index-choice.options.length)));
-		}
-		*/
-
-		
-		if(choice.show){
-			//get the maximum x length
-			var longest = 10;
-			if(!hasMultiLine()){
-				longest = bigChoice(choice.options);
-			}
-
-			//choice boxes
-			var cx = camera.x+3;
-			for(var c=0;c<choice.options.length;c++){
-				var cy = camera.y+95+(-((optionIMG.height-2)/2)*(sumLines(c)));
-
-				//var cy = camera.y+95+(-(optionIMG.height-1)*((sumLines(c)*11)+1));
-				ctx.drawImage(optionIMG, 0,0, optionIMG.width, optionIMG.height, 
-								cx, cy, (longest/10)*(optionIMG.width), (choice.lines[c]/2)*optionIMG.height);
-				choiceText(choice.options[c], choice.lines[c], cy+9);
-
-				//ctx.font = "6px Gameboy";
-				//ctx.fillText(choice.options[choice.options.length-(c+1)], cx+4, cy+9);
-			}
-
-			//select
-			var cy2 = camera.y+95-((optionIMG.height-2)/2)*(sumLines(choice.index));
-			//((((optionIMG.height-2)/2)*(sumLines(choice.index)))*(choice.index-choice.options.length)), 
-
-			ctx.drawImage(selectIMG, 0,0, selectIMG.width, selectIMG.height, 
-								cx, cy2,
-								(longest/10)*(selectIMG.width), (choice.lines[choice.index]/2)*selectIMG.height);
-		}
-		
-	}
-}
-
-//find the longest line of text
-function bigChoice(arr){
-	var longest = 0;
-	for(var i=0;i<arr.length;i++){
-		longest = (arr[i].length > longest ? arr[i].length : longest);
-	}
-	return longest+1;
-}
-
-//wrap the text if overflowing on the choice box
-function choiceText(text, lines, y) {
-	var texts = text.split(" | ");
-	ctx.font = "14px Courier";
-	for(var l=0;l<lines;l++){
-		ctx.fillText(texts[l], camera.x+7, y+(l*9));
-	}
-}	
-
-//
-function sumLines(i){
-	var lines = story.choice_box.lines;
-	var sum = 0;
-	for(var l=i;l<lines.length;l++){
-		sum += lines[l];
-	}
-	return sum;
-}
-
-function hasMultiLine(){
-	for(var l=0;l<story.choice_box.lines.length;l++){
-		if(story.choice_box.lines[l] > 1)
-			return true;
-	}
-	return false;
-}
-
-//typewriter functions
-var tw = 0;
-var curLine = 0;						//current line index
-var curText = "";
-var text_speed = 85;
-var text_time = 0;					//typewriter effect
-var texting = false;				//currently typing
-var lineTexts = ["", ""];		//the two lines that can be shown on screen
-var maxWidth = 140;
-var lineHeight = 32;
-var jump = -1;
-
-function typewrite(){	
-
-	//pre-processing and reset
-	if(!texting){
-		curText = story.dialogue.text[story.dialogue.index];		//set the text to the NPC or item text 
-		if(!curText)
-			return;
-
-		//check if section jump
-		if(jump == -1){
-			var jumper = curText.match(/<[0-9]+>/g);
-			if(jumper){
-				curText = curText.replace(/<[0-9]+>/g, "");
-				jump = parseInt(jumper[0].replace(/[<>]/g, ""));
-			}
-		}
-		curText = curText.replace(/<[0-9]+>/g, "");		//catch the stragler
-		tw = 0;
-		//console.log("restart")
-		curLine = 0;
-		clearText();
-		ctx.font = "16px Courier";
-		ctx.fillStyle = "#000000";
-		texting = true;
-	}
-	if(tw < curText.length){
-		//if at a new line reset
-		if(curText[tw] === "|"){
-			tw++;
-			curLine++;
-			if(curLine > 1){
-				lineTexts[0] = lineTexts[1];
-				lineTexts[1] = "";
-			}
-		}
-		//append letters
-		else{
-			if(curLine == 0)
-				lineTexts[0] += curText[tw];
-			else
-				lineTexts[1] += curText[tw];
-		}
-		text_time = setTimeout(typewrite, text_speed);
-		tw++;
-	}else{
-		texting = false;
-		clearTimeout(text_time);
-		//console.log("done");
-	}
-}
-
-function clearText(){
-	lineTexts[0] = "";
-	lineTexts[1] = "";
-	clearTimeout(text_time);
-}
-
-function showText(){
-	ctx.fillStyle = "#000000";
-	ctx.fillText(lineTexts[0], camera.x + 16, camera.y + 172);
-	ctx.fillText(lineTexts[1], camera.x + 16, camera.y + 172 + lineHeight);
-}
-
-
-
 
 
 ////////////////////   KEY FUNCTIONS  //////////////////
@@ -1170,25 +990,25 @@ function anyKey(){
 
 //movement arrow keys
 function moveKeys(){
-	if(!player.moving && !player.interact  && !story.pause && !story.cutscene){
+	if(!kyle.moving && !kyle.interact  && !story.pause && !story.cutscene){
 		if(keyTick < 1){
 		if(keys[leftKey])         //left key
-			player.dir = "west";
+			kyle.dir = "west";
 		else if(keys[rightKey])    //right key
-			player.dir = "east";
+			kyle.dir = "east";
 		else if(keys[upKey])    //up key
-			player.dir = "north";
+			kyle.dir = "north";
 		else if(keys[downKey])    //down key
-			player.dir = "south";
+			kyle.dir = "south";
 		}else{
 		if(keys[leftKey])         //left key
-			goWest(player);
+			goWest(kyle);
 		else if(keys[rightKey])    //right key
-			goEast(player);
+			goEast(kyle);
 		else if(keys[upKey])    //up key
-			goNorth(player);
+			goNorth(kyle);
 		else if(keys[downKey])    //down key
-			goSouth(player);
+			goSouth(kyle);
 		}
 	}
 }
@@ -1200,14 +1020,14 @@ var cutT = 0;
 function actionKeys(){
 	//interact [Z]
 	var dialogue = story.dialogue;
-	if(keys[a_key] && !player.interact && !player.moving && normal_game_action()){
+	if(keys[a_key] && !kyle.interact && !kyle.moving && normal_game_action()){
 		for(var i=0;i<items.length;i++){
-			if(canInteract(player, items[i]) && items[i].text){
+			if(canInteract(kyle, items[i]) && items[i].text){
 
 				story.trigger = "touch_" + items[i].name;
 				reInteract = false;
-				player.other = items[i];
-				player.interact = true;
+				kyle.other = items[i];
+				kyle.interact = true;
 
 				if(!story.cutscene && !triggerWord(story.trigger)){
 					dialogue.text = items[i].text;
@@ -1222,15 +1042,15 @@ function actionKeys(){
 			}
 		}
 		for(var i=0;i<npcs.length;i++){
-			if(canTalk(player, npcs[i]) && npcs[i].text){
+			if(canTalk(kyle, npcs[i]) && npcs[i].text){
 				story.trigger = "talk_" + npcs[i].name;
 
 				//setup
 				reInteract = false;
-				player.other = npcs[i];
-				player.other.interact = true;
-				//faceOpposite(player.other);
-				player.interact = true;
+				kyle.other = npcs[i];
+				kyle.other.interact = true;
+				//faceOpposite(kyle.other);
+				kyle.interact = true;
 				clearInterval(npcs[i].wt);
 				npcs[i].wt = 0;
 
@@ -1252,11 +1072,11 @@ function actionKeys(){
 	}
 	//finished current dialogue text
 	else if(keys[a_key] && dialogue.show && reInteract && !texting){
-		var other = player.other;
+		var other = kyle.other;
 		reInteract = false;
 		//end of dialogue
 		if(dialogue.index +1 == dialogue.text.length){
-			player.interact = false;
+			kyle.interact = false;
 
 			//select item if options showing
 			if(story.choice_box.show){
@@ -1270,9 +1090,9 @@ function actionKeys(){
 
 			//normal reset
 			if(!story.cutscene){
-				player.other.interact = false;
+				kyle.other.interact = false;
 				if(jump !== -1){
-					player.other.text_index = jump;
+					kyle.other.text_index = jump;
 					jump = -1;
 				}
 				dialogue.index = 0;
@@ -1282,7 +1102,7 @@ function actionKeys(){
 		}
 		//still more dialogue left
 		else{
-			player.other.text_index++;
+			kyle.other.text_index++;
 			dialogue.index++;
 			typewrite();
 		}
@@ -1325,9 +1145,9 @@ function demoArea(){
 			[1,1,1,1,1,1,1,1,1,1,1,1,1,1,1,1]
 			];
 	level_loaded = true;
-	player.x = 4*story.size;
-	player.y = 4*story.size;
-	lockMotion(player);
+	kyle.x = 4*story.size;
+	kyle.y = 4*story.size;
+	lockMotion(kyle);
 	story.scene = "main";
 }
 
@@ -1353,13 +1173,13 @@ function main(){
 
 	//play();
 
-	//player movement
-	var pixX = Math.round(player.x / size);
-	var pixY = Math.round(player.y / size);
+	//kyle movement
+	var pixX = Math.round(kyle.x / size);
+	var pixY = Math.round(kyle.y / size);
 
 	if(!story.pause){
-		travel(player);
-		if(player.action == "travel")
+		travel(kyle);
+		if(kyle.action == "travel")
 			story.trigger = "x"+pixX+"_y"+pixY;
 	}
 
@@ -1376,7 +1196,7 @@ function main(){
 
 	//dialogue
 	if(!story.cutscene){
-		if(player.interact){
+		if(kyle.interact){
 			story.dialogue.show = true;
 		}else{
 			story.dialogue.show = false;
@@ -1398,7 +1218,7 @@ function main(){
 
 	///////////////    DEBUG   //////////////////
 	
-	var settings = "X: " + Math.round(player.x) + " | Y: " + Math.round(player.y);
+	var settings = "X: " + Math.round(kyle.x) + " | Y: " + Math.round(kyle.y);
 	settings += " --- Pix X: " + pixX + " | Pix Y: " + pixY;
 	settings += " --- Camera: " + camera.x + ", " + camera.y
 	document.getElementById('debug').innerHTML = settings;
