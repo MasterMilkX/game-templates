@@ -3,17 +3,17 @@
 
 //dialog gui
 var dialogIMG = new Image();
-dialogIMG.src = '../sprites/gui/dialog.png';
+dialogIMG.src = '../../sprites/gui/dialog.png';
 var dialogReady = false;
 dialogIMG.onload = function(){dialogReady = true;};
 
 var optionIMG = new Image();
-optionIMG.src = "../sprites/gui/choice_box.png";
+optionIMG.src = "../../sprites/gui/choice_box.png";
 var optionReady = false;
 optionIMG.onload = function(){optionReady = true;};
 
 var selectIMG = new Image();
-selectIMG.src = "../sprites/gui/select_box.png";
+selectIMG.src = "../../sprites/gui/select_box.png";
 var selectReady = false;
 selectIMG.onload = function(){selectReady = true;};
 
@@ -94,7 +94,7 @@ function bigMultiChoice(arr){
 function choiceText(text, lines, y) {
 	var texts = text.split(" | ");
 	var textScale = (canvas.height / 400);
-	ctx.font = "20px Fixedsys";
+	ctx.font = "6px Gameboy";
 	ctx.fillStyle = "#000000";
 	for(var l=0;l<lines;l++){
 		ctx.fillText(texts[l], camera.x+(25*textScale), y+(l*25*textScale));
@@ -157,7 +157,7 @@ function typewrite(){
 		//console.log("restart")
 		curLine = 0;
 		clearText();
-		ctx.font = "28px Fixedsys";
+		ctx.font = "12px Courier";
 		ctx.fillStyle = "#000000";
 		texting = true;
 	}
@@ -204,7 +204,7 @@ function showText(){
 ////////////////////		STORY  		/////////////////////
 
 function newDialog(dialogue){
-	if(JSON.stringify(story.dialogue.text) != JSON.stringify(dialogue)){
+	if(story.dialogue.text != dialogue){
 		story.dialogue.text = dialogue;
 		story.dialogue.show = true;
 		story.dialogue.index = 0;

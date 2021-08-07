@@ -1,28 +1,39 @@
-<!--
-  RPG Template
-  Version 0.1
-  Game by Megan "Milk" Charity
--->
+<html>
+	<head>
+		<title>Milk's RPG Template</title>
+		<style>
+			body{
+				background-color:#ffffff;
+				text-align: center;
+			}
+			#game{
+				width:500px;
+				height:480px;
+				border:2px solid #000000;
+				background-color:#dedede;
+				padding-left: 0;
+				padding-right: 0;
+				margin-left: auto;
+				margin-right: auto;
+				display:block;
 
-<!DOCTYPE html>
-  <head>
-    <title>RPG Template</title>
-    <link rel="stylesheet" type="text/css" href="styles.css">
-    
-    <script src="story.js"></script>
-    <script src="dialog.js"></script>
-    <script src="character.js"></script>
-    <!--
-    <script src="items.js"></script>
-    <script src="ai.js"></script>
-    <script src="map.js"></script>
-    <script src="level.js"></script>
-  -->
-  </head>
-  <body onload="init()">
-    <div id="debugBar">
-      <p id="debug">...</p>
-    </div>
-    <script src="game.js"></script>
-  </body>
+				/* scale up pixels */
+				image-rendering: -moz-crisp-edges;
+		        image-rendering: -webkit-crisp-edges;
+		        image-rendering: pixelated;
+		        image-rendering: crisp-edges;
+			}
+			@font-face {font-family: Gameboy; src: url('../sprites/gui/pokemon_gb-webfont.ttf');}
+			@font-face {font-family: Fixedsys; src: url('../sprites/gui/FSEX300.ttf');}
+		</style>
+	</head>
+	<body onload='init()'>
+		<div id="debugBar"><p id="debug" style="color:black">...</p></div>
+		<canvas id='game'>Browser does not support HTML5 canvas</canvas>
+		<script src='dialog.js'></script>
+		<script src="character.js"></script>
+		<script src="item.js"></script>
+		<script src="narrative.js"></script>
+		<script src="code.js"></script>
+	</body>
 </html>

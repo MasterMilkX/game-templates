@@ -13,7 +13,7 @@ function boundArea(x, y, w, h){
 
 function getIMGNPC(name){
   var charIMG = new Image();
-  charIMG.src = "../sprites/" + name + ".png";
+  charIMG.src = "../../sprites/" + name + ".png";
   var charReady = false;
   charIMG.onload = function(){charReady = true;};
 
@@ -25,8 +25,8 @@ function getIMGNPC(name){
 
 function npc(x, y, text, skin){
 	this.name = "???";
-	this.x = x*size;
-	this.y = y*size;
+	this.x = x*story.size;
+	this.y = y*story.size;
   	//sprite properties
 	this.width = 16;
 	this.height = 16;
@@ -78,77 +78,4 @@ function npc(x, y, text, skin){
 }
 
 
-
-///// PLAYER DEFINITION
-
-var kyleIMG = new Image();
-kyleIMG.src = "../sprites/kyle_rpg.png";
-var kyleReady = false;
-kyleIMG.onload = function(){kyleReady = true;};
-
-
-//player
-// [REPLACE KYLE WITH YOUR MC NAME]
-var kyle = {
-	//sprite properties
-		name : "kyle",
-		width : 16,
-		height : 16,
-		dir : "south",
-		img : kyleIMG,
-		ready : kyleReady,
-		offsetX : 0,
-		offsetY : 0,
-
-		//movement
-		speed : 1,
-		initPos : 0,
-		moving : false,
-		x : 8 * size, 
-		y : 4 * size,
-		velX : 0,
-		velY : 0,
-		fps : 9,            //frame speed
-		fpr : 3,            //# of frames per row
-		show : true,
-
-		//other properties
-		interact : false,
-		other : null,
-		pathQueue : [],
-		lastPos : [],
-		following : false,
-
-		//other properties
-		interact : false,
-		other : null,
-		pathQueue : [],
-		lastPos : [],
-		following : false,
-
-		/* based on pokemon 2nd gen */
-
-		//walk animation
-		idleNorth : [10,10,10,10],
-		idleSouth : [1,1,1,1],
-		idleWest : [4,4,4,4],
-		idleEast : [7,7,7,7],
-
-		//movement animation
-		moveNorth : [9,10,11,10],
-		moveSouth : [0,1,2,1],
-		moveWest : [3,4,5,4],
-		moveEast : [6,7,8,7],
-
-		seqlength : 4,
-		curFrame : 0,
-		ct : 0
-
-}
-
-/// NPCS
-
 var ai = new npc(7,7,["Hello! Welcome to...", "The RPG Template!<0>"], "npc_template_2_full");
-ai.name = "AI";
-
-var npcs = [ai]

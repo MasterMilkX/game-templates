@@ -1,3 +1,35 @@
+/// DEFINE STORY OBJECT TO USE WITH THE DIALOG/NARRATIVE SCRIPTS
+
+var story = {
+	taskIndex : 0,
+	trigger : "none",
+	interaction : false,
+	randResp : -1,
+
+	cutscene : false,
+	pause : false,
+
+	dialogue : {
+		size : "12px",
+		font : "Fixedsys",
+		text : [""],
+		index : 0,
+		show : false
+	},
+
+	choice_box : {
+		size : "6px",
+		font : "Gameboy",
+		options : [],
+		index : 0,
+		lines : [],
+		show : false
+	}
+
+
+};
+
+
 //////////////          DIALOG          ////////////////
 
 
@@ -94,7 +126,7 @@ function bigMultiChoice(arr){
 function choiceText(text, lines, y) {
 	var texts = text.split(" | ");
 	var textScale = (canvas.height / 400);
-	ctx.font = "6px Gameboy";
+	ctx.font = story.choice_box.size + " " + story.choice_box.font;
 	ctx.fillStyle = "#000000";
 	for(var l=0;l<lines;l++){
 		ctx.fillText(texts[l], camera.x+(25*textScale), y+(l*25*textScale));
@@ -157,7 +189,7 @@ function typewrite(){
 		//console.log("restart")
 		curLine = 0;
 		clearText();
-		ctx.font = "12px Courier";
+		ctx.font = story.dialogue.size + " " + story.dialogue.font;
 		ctx.fillStyle = "#000000";
 		texting = true;
 	}
@@ -204,7 +236,7 @@ function showText(){
 ////////////////////		STORY  		/////////////////////
 
 function newDialog(dialogue){
-	if(story.dialogue.text != dialogue){
+	if(JSON.stringify(story.dialogue.text) != JSON.stringify(dialogue)){
 		story.dialogue.text = dialogue;
 		story.dialogue.show = true;
 		story.dialogue.index = 0;
@@ -254,6 +286,10 @@ function endScene(){
 	clearText();
 }
 
+//check for cutscene trigger words
+function triggerWord(word){
+	return true;
+}
 
 
 

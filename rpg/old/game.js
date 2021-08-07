@@ -10,7 +10,7 @@ document.body.appendChild(canvas);
 
 //background image
 var bgPNG = new Image();
-bgPNG.src = "../sprites/background.png";
+bgPNG.src = "../../sprites/background.png";
 bgPNG.onload = function(){
 	ctx.drawImage(bgPNG, 0, 0);
 };
@@ -18,7 +18,7 @@ bgPNG.onload = function(){
 //////   gui   //////
 //dialog
 var dialogIMG = new Image();
-dialogIMG.src = '../sprites/gui/dialog_box.png';
+dialogIMG.src = '../../sprites/gui/dialog_box.png';
 var dialogReady = false;
 
 
@@ -30,7 +30,7 @@ var cols = 8;
 
 var collideTiles = [1];
 var tiles = new Image();
-tiles.src = "../sprites/map/demo_tiles.png";
+tiles.src = "../../sprites/map/demo_tiles.png";
 var tilesReady = false;
 tiles.onload = function(){
 	tilesReady = true;
@@ -68,7 +68,7 @@ var keys = [];
 
 
 var kyleIMG = new Image();
-kyleIMG.src = "../sprites/kyle_rpg.png";
+kyleIMG.src = "../../sprites/kyle_rpg.png";
 var kyleReady = false;
 kyleIMG.onload = function(){kyleReady = true;};
 
