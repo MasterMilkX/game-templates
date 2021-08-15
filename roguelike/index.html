@@ -1,32 +1,64 @@
 <html>
 	<head>
-		<title>Milk's HTML5 Template</title>
+		<title>Milk's Roguelike Template</title>
 		<style>
 			body{
-				background-color:#ffffff;
+				background-color:#000000;
 				text-align: center;
 			}
 			#game{
-				width:320px;
-				height:320px;
-				border:2px solid #000000;
-				background-color:#dedede;
+				width:400px;
+				height:360px;
+				border:2px solid #ffffff;
 				padding-left: 0;
 				padding-right: 0;
 				margin-left: auto;
 				margin-right: auto;
 
-				/* scale up pixels */
+				/* rendering */
 				image-rendering: -moz-crisp-edges;
-		        image-rendering: -webkit-crisp-edges;
-		        image-rendering: pixelated;
-		        image-rendering: crisp-edges;
+				image-rendering: -webkit-crisp-edges;
+				image-rendering: pixelated;
+				image-rendering: crisp-edges;
 			}
+			#status{
+				width: 180px;
+				height: 360px;
+				border:2px solid #ffffff;
+				padding-left: 0;
+				padding-right: 0;
+				margin-left: 10px;
+				margin-right: auto;
+
+			}
+			#text_update{
+				width:600px;
+				height:64px;
+				border:2px solid #ffffff;
+				padding-left: 0;
+				padding-right: 0;
+				margin-top: 10px;
+			}
+			#container{
+				margin-right: auto;
+				margin-left: auto;
+				width: 620px;
+			}
+			@font-face {font-family: Proggy; src: url('../sprites/gui/ProggySquare.ttf');}
+			@font-face {font-family: IBM2; src: url('../sprites/gui/ibm2.ttf');}
+			@font-face {font-family: Phoenix; src: url('../sprites/gui/phoenix.ttf');}
 		</style>
+		<script src='pcg.js'></script>
+		<script src='items.js'></script>
+		<script src='monster.js'></script>
 	</head>
-	<body>
+	<body onload='init()'>
+		<div id='container'>
+			<canvas id='game'>This is the main screen</canvas>
+			<canvas id='status'>This is the text status screen</canvas>
+			<canvas id='text_update'>This is the text update screen</canvas>
+		</div>
 		<!--<div id="debugBar"><p id="debug" style="color:white">...</p></div>-->
-		<canvas id='game'>Browser does not support HTML5 canvas</canvas>
 		<script src="code.js"></script>
 	</body>
 </html>
