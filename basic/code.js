@@ -15,16 +15,17 @@ var camera = {
 //KEYS
 
 // directionals
-var upKey = 38;     //[Up]
-var leftKey = 37;   //[Left]
-var rightKey = 39;  //[Rigt]
-var downKey = 40;   //[Down]
+var upKey = "ArrowUp";     //[Up]
+var leftKey = "ArrowLeft";   //[Left]
+var rightKey = "ArrowRight";  //[Rigt]
+var downKey = "ArrowDown";   //[Down]
 var moveKeySet = [upKey, leftKey, rightKey, downKey];
 
 // A and b
-var a_key = 90;   //[Z]
-var b_key = 88;   //[X]
-var actionKeySet = [a_key, b_key];
+var a_key = "KeyA";   //[Z]
+var b_key = "KeyB";   //[X]
+var shift_key = "ShiftLeft";  //[Shift]
+var actionKeySet = [shift_key,a_key, b_key];
 
 var keys = [];
 
@@ -151,26 +152,26 @@ function main(){
 
 //determine if valud key to press
 document.body.addEventListener("keydown", function (e) {
-	if(inArr(moveKeySet, e.keyCode)){
-		keys[e.keyCode] = true;
-	}else if(inArr(actionKeySet, e.keyCode)){
-		keys[e.keyCode] = true;
+	if(inArr(moveKeySet, e.code)){
+		keys[e.code] = true;
+	}else if(inArr(actionKeySet, e.code)){
+		keys[e.code] = true;
 	}
 });
 
 //check for key released
 document.body.addEventListener("keyup", function (e) {
-	if(inArr(moveKeySet, e.keyCode)){
-		keys[e.keyCode] = false;
-	}else if(inArr(actionKeySet, e.keyCode)){
-		keys[e.keyCode] = false;
+	if(inArr(moveKeySet, e.code)){
+		keys[e.code] = false;
+	}else if(inArr(actionKeySet, e.code)){
+		keys[e.code] = false;
 	}
 });
 
 //prevent scrolling with the game
 window.addEventListener("keydown", function(e) {
     // space and arrow keys
-    if(([32, 37, 38, 39, 40].indexOf(e.keyCode) > -1)){
+    if(([32, 37, 38, 39, 40].indexOf(e.code) > -1)){
         e.preventDefault();
     }
 }, false);
